@@ -4,7 +4,6 @@ using Phoenix.Data;
 using Phoenix.Services;
 using Phoenix.ViewModels;
 using System;
-using System.Linq;
 using System.Windows;
 
 namespace Phoenix
@@ -31,8 +30,8 @@ namespace Phoenix
         {
             var host = Host;
 
-           // using (var scope = Services.CreateScope())
-           //     scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
+            using (var scope = Services.CreateScope())
+                scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
 
             base.OnStartup(e);
             await host.StartAsync();

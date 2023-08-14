@@ -26,6 +26,8 @@ namespace Phoenix.Data
                     default:
                         throw new InvalidOperationException($"Подключение {type} не поддерживаеся");
                 }
-            });
+            })
+            .AddTransient<DbInitializer>()
+            ;
     }
 }
