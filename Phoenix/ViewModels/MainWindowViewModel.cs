@@ -1,14 +1,13 @@
-﻿using MathCore.WPF.ViewModels;
-
+﻿
 namespace Phoenix.ViewModels
 {
-    internal class MainWindowViewModel : ViewModel
+    internal class MainWindowViewModel 
     {
-        private string _title = "11aaa11";
+        private string _title = "Главная страница";
         public string Title
         {
             get => _title; 
-            set => Set(ref _title, value);
+            set => _title = value;
         }
     }
 }

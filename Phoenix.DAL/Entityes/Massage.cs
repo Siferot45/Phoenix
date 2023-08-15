@@ -1,5 +1,4 @@
-﻿using Phoenix.DAL.Entityes;
-using Phoenix.DAL.Entityes.Base;
+﻿using Phoenix.DAL.Entityes.Base;
 
 namespace Phoenix.DAL.Entityes
 {
