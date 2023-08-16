@@ -7,6 +7,6 @@ namespace Phoenix.DAL.Entityes
         public int? Duration { get; set; }
         public string? Description { get; set; }
         public Category? Category { get; set; }
-       // public override string ToString() => $"Массаж {Name}";
+        public override string ToString() => $"Массаж {Name}";
     }
 }

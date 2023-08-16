@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Phoenix.DAL.Context;
+using Phoenix.DAL.Repositories;
 using System;
 
 namespace Phoenix.Data
@@ -28,6 +29,7 @@ namespace Phoenix.Data
                 }
             })
             .AddTransient<DbInitializer>()
+            .AddRepositoryInDB()
             ;
     }
 }

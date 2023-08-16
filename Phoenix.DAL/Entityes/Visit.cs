@@ -10,6 +10,6 @@ namespace Phoenix.DAL.Entityes
         public Massage Massage { get; set; }
         public Client Client { get; set; }
         public Master Master { get; set; }
-       // public override string ToString() => $"Посищение {Massage}: {Master}, {Client}, {Price:C}";
+        public override string ToString() => $"Посищение {Massage}: {Master}, {Client}, {Price:C}";
     }
 }
