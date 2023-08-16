@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix", "Phoenix\Phoenix.csproj", "{9355BA52-CA7B-46A1-ACDB-DE0BB4F5D6BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoenix.DAL", "Phoenix.DAL\Phoenix.DAL.csproj", "{CFFBFF1E-2FFB-42DA-8924-567282262119}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix.DAL", "Phoenix.DAL\Phoenix.DAL.csproj", "{CFFBFF1E-2FFB-42DA-8924-567282262119}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
