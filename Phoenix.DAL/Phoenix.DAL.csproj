@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\Phoenix.Interfaces\Phoenix.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
