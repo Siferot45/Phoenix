@@ -8,7 +8,10 @@
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}"
         Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="Массажи" Command="{Binding}"/>
+            <MenuItem Header="Клиенты" Command="{Binding}"/>
+        </Menu>
+    </DockPanel>
 </Window>

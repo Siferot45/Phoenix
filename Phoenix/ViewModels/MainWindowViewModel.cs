@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Input;
+
 namespace Phoenix.ViewModels
 {
     internal class MainWindowViewModel 
@@ -9,5 +11,8 @@ namespace Phoenix.ViewModels
             get => _title; 
             set => _title = value;
         }
+        private ICommand _showMassageViewCommand;
+        public ICommand ShowMassageViewCommand => _showMassageViewCommand
+            ??= new CommandHelper();
     }
 }

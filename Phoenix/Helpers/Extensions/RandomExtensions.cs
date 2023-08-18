@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phoenix.Helper
+namespace Phoenix.Helpers.Extensions
 {
     static class RandomExtensions
     {
