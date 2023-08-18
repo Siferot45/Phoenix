@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 
-namespace Phoenix.ViewModels.Base
+namespace Phoenix.ViewModels.EntityViewModel.Base
 {
-    internal class ViewModelBase : INotifyPropertyChanged 
+    internal class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -16,9 +16,9 @@ namespace Phoenix.ViewModels.Base
             var invocationList = handlers.GetInvocationList();
 
             var arg = new PropertyChangedEventArgs(propertyName);
-            foreach ( var invocation in invocationList)
+            foreach (var invocation in invocationList)
             {
-                if(invocation.Target is DispatcherObject dispatcherObject)
+                if (invocation.Target is DispatcherObject dispatcherObject)
                     dispatcherObject.Dispatcher.Invoke(invocation, this, arg);
                 else
                     invocation.DynamicInvoke(this, arg);
@@ -26,7 +26,7 @@ namespace Phoenix.ViewModels.Base
         }
         protected virtual bool Set<T>(ref T filed, T value, [CallerMemberName] string propertyName = null)
         {
-            if(Equals(filed, value)) 
+            if (Equals(filed, value))
                 return false;
             OnPropertyChanged(propertyName);
             return true;
