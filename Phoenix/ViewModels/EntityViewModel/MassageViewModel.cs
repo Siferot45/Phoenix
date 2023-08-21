@@ -9,16 +9,16 @@ namespace Phoenix.ViewModels.EntityViewModel
     {
         private readonly IRepository<Massage> _massageRepository;
 
-        public MassageViewModel(IRepository<Massage> massageRepository )
+        public MassageViewModel(IRepository<Massage> massageRepository)
         {
             _massageRepository = massageRepository;
         }
 
-        private ObservableCollection<Massage> _massages;
-        public ObservableCollection<Massage> Massages
-        {
-            get => _massages;
-            set => Set(ref _massages, value);
-        }
+        //private ObservableCollection<Massage> _massages;
+        //public ObservableCollection<Massage> Massages
+        //{
+        //    get => _massages;
+        //    set => Set(ref _massages, value);
+        //}
     }
 }

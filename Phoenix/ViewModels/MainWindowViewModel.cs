@@ -1,8 +1,9 @@
 ﻿using Phoenix.DAL.Entityes;
 using Phoenix.Helpers.Commands;
 using Phoenix.Interfaces;
+using Phoenix.ViewModels.EntityViewModel;
 using Phoenix.ViewModels.EntityViewModel.Base;
-using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Phoenix.ViewModels
@@ -19,6 +20,7 @@ namespace Phoenix.ViewModels
         #endregion
 
         #region Текущая модель предстовления
+
         private ViewModelBase _currentModel;
         public ViewModelBase CurrentModel
         {
@@ -27,11 +29,13 @@ namespace Phoenix.ViewModels
         }
         #endregion
 
-        private readonly IRepository<Massage> _massage;
+        private readonly IRepository<Massage> _massages;
+        private readonly IRepository<Client> _clients;
 
-        public MainWindowViewModel(IRepository<Massage> massage)
+        public MainWindowViewModel(IRepository<Massage> massages, IRepository<Client> clients)
         {
-            _massage = massage;
+            _massages = massages;
+            _clients = clients;
         }
 
         private ICommand _showMassageViewCommand;
@@ -39,11 +43,27 @@ namespace Phoenix.ViewModels
         public ICommand ShowMassageViewCommand => _showMassageViewCommand
             ??= new CommandHelper(OnShowMassageViewCommandExecute, CanShowMassageViewCommandExecute);
 
-        private bool CanShowMassageViewCommandExecute() => true;
+        private bool CanShowMassageViewCommandExecute(object obj) => true;
 
         private void OnShowMassageViewCommandExecute(object obj)
         {
-            CurrentModel = new MassageViewModel(_massage);
+            CurrentModel = new MassageViewModel(_massages);
         }
+
+        #region Команда покказа окна клиентов
+
+        private ICommand _showClientsViewCommand;
+
+        public ICommand ShowClientsViewCommand => _showClientsViewCommand
+            ??= new CommandHelper(OnShowClientsViewCommandExecute, CanShowClientsViewCommandExecute);
+
+        private bool CanShowClientsViewCommandExecute(object obj) => true;
+
+        private void OnShowClientsViewCommandExecute(object obj)
+        {
+            CurrentModel = new ClientsViewModel(_clients);
+        }
+
+        #endregion
     }
 }

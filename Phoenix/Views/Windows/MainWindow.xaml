@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Phoenix.ViewModels.EntityViewModel"
         xmlns:local="clr-namespace:Phoenix"
         mc:Ignorable="d"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
@@ -10,8 +11,21 @@
         Height="450" Width="800">
     <DockPanel>
         <Menu IsMainMenu="True">
-            <MenuItem Header="Массажи" Command="{Binding}"/>
-            <MenuItem Header="Клиенты" Command="{Binding}"/>
+            <MenuItem Header="Массажи" Command="{Binding ShowMassageViewCommand}"/>
+            <MenuItem Header="Клиенты" Command="{Binding ShowClientsViewCommand}"/>
         </Menu>
+        <StatusBar>
+            <StatusBarItem>Потом сделать чтото</StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <!--<Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="../../Templates/ModelMainView.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>-->
+            <ContentControl Content="{Binding CurrentModel}"/>
+        </Grid>
     </DockPanel>
 </Window>
