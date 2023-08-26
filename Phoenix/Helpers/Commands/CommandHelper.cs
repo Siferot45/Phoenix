@@ -20,6 +20,7 @@ namespace Phoenix.Helpers.Commands
         {
             if(!CanExecute(parameter))
                 return;
+
             _execute(parameter);
         }
     }

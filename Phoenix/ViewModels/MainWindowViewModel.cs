@@ -55,11 +55,11 @@ namespace Phoenix.ViewModels
         private ICommand _showClientsViewCommand;
 
         public ICommand ShowClientsViewCommand => _showClientsViewCommand
-            ??= new CommandHelper(OnShowClientsViewCommandExecute, CanShowClientsViewCommandExecute);
+            ??= new CommandHelper(OnShowClientsViewCommandExecuted, CanShowClientsViewCommandExecute);
 
         private bool CanShowClientsViewCommandExecute(object obj) => true;
 
-        private void OnShowClientsViewCommandExecute(object obj)
+        private void OnShowClientsViewCommandExecuted(object obj)
         {
             CurrentModel = new ClientsViewModel(_clients);
         }

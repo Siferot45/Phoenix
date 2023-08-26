@@ -14,11 +14,11 @@ namespace Phoenix.ViewModels.EntityViewModel
             _massageRepository = massageRepository;
         }
 
-        //private ObservableCollection<Massage> _massages;
-        //public ObservableCollection<Massage> Massages
-        //{
-        //    get => _massages;
-        //    set => Set(ref _massages, value);
-        //}
+        private ObservableCollection<Massage> _massages;
+        public ObservableCollection<Massage> Massages
+        {
+            get => _massages;
+            set => Set(ref _massages, value);
+        }
     }
 }
