@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:local="clr-namespace:Phoenix.Views"
              xmlns:vm="clr-namespace:Phoenix.ViewModels.EntityViewModel"
              mc:Ignorable="d" 
@@ -16,22 +17,31 @@
     </i:Interaction.Triggers>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="400"/>
+            <ColumnDefinition Width="Auto" MinWidth="250"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <GroupBox Header="Клиенты">
             <GroupBox.Resources>
                 <CollectionViewSource x:Key="ClientsView" Source="{Binding ClientsCollection}">
-                    
+                    <CollectionViewSource.SortDescriptions>
+                        <cm:SortDescription PropertyName="Name"/>
+                    </CollectionViewSource.SortDescriptions>
                 </CollectionViewSource>
             </GroupBox.Resources>
-            <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <DockPanel>
+                <TextBox DockPanel.Dock="Top" Text="{Binding ClientsFilter, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding Surname}"/>
+                                <TextBlock Text="{Binding Patronymic}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
         </GroupBox>
     </Grid>
 </UserControl>

@@ -1,14 +1,22 @@
 ﻿using Phoenix.Helpers.Commands.Base;
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 
 namespace Phoenix.Helpers.Commands
 {
     internal class CommandHelper : CommandBase
     {
-        private readonly Action<object> _execute;
-        private readonly Func<object, bool> _canExecute;
+        private readonly Action<object?> _execute;
+        private readonly Func<object?, bool> _canExecute;
+        private readonly Func<object?, Task> _ExecuteAsync;
 
-        public CommandHelper(Action<object> Execute, Func<object, bool> CanExecute = null)
+        private readonly Func<object?, bool>? _CanExecuteAsync;
+
+        private volatile Task? _ExecutingTask;
+
+
+        public CommandHelper(Action<object?> Execute, Func<object?, bool> CanExecute = null)
         {
             _execute = Execute ?? throw new ArgumentNullException(nameof(Execute));
             _canExecute = CanExecute;

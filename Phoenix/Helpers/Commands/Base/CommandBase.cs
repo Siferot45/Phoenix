@@ -14,6 +14,5 @@ namespace Phoenix.Helpers.Commands.Base
         public abstract bool CanExecute(object? parameter);
 
         public abstract void Execute(object? parameter);
-
     }
 }
