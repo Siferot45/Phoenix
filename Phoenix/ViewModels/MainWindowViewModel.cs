@@ -1,6 +1,7 @@
 ﻿using Phoenix.DAL.Entityes;
 using Phoenix.Helpers.Commands;
 using Phoenix.Interfaces;
+using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel;
 using Phoenix.ViewModels.EntityViewModel.Base;
 using System.Windows;
@@ -31,11 +32,13 @@ namespace Phoenix.ViewModels
 
         private readonly IRepository<Massage> _massages;
         private readonly IRepository<Client> _clients;
+        private readonly IUserDialog<Client> _userDialog;
 
-        public MainWindowViewModel(IRepository<Massage> massages, IRepository<Client> clients)
+        public MainWindowViewModel(IRepository<Massage> massages, IRepository<Client> clients,IUserDialog<Client> _UserDialog)
         {
             _massages = massages;
             _clients = clients;
+            _userDialog = _UserDialog;
         }
 
         private ICommand _showMassageViewCommand;
@@ -61,7 +64,7 @@ namespace Phoenix.ViewModels
 
         private void OnShowClientsViewCommandExecuted(object obj)
         {
-            CurrentModel = new ClientsViewModel(_clients);
+            CurrentModel = new ClientsViewModel(_clients, _userDialog);
         }
 
         #endregion

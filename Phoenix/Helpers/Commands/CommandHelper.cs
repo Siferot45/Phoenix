@@ -1,6 +1,5 @@
 ﻿using Phoenix.Helpers.Commands.Base;
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace Phoenix.Helpers.Commands

@@ -4,6 +4,7 @@ using Phoenix.Data;
 using Phoenix.Services;
 using Phoenix.ViewModels;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace Phoenix
@@ -13,6 +14,16 @@ namespace Phoenix
     /// </summary>
     public partial class App : Application
     {
+        public static Window ActiveWindow => Current.Windows
+            .OfType<Window>()
+            .FirstOrDefault(w => w.IsActive);
+
+        public static Window FocusedWindow => Current.Windows
+            .OfType<Window>()
+            .FirstOrDefault(w => w.IsFocused);
+
+        public static Window CurrentWindow => FocusedWindow ?? ActiveWindow;
+
         private static IHost _host;
 
         public static IHost Host => _host

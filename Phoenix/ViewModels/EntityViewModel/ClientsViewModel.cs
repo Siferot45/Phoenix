@@ -1,6 +1,7 @@
 ﻿using Phoenix.DAL.Entityes;
 using Phoenix.Helpers.Commands;
 using Phoenix.Interfaces;
+using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel.Base;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -13,32 +14,51 @@ namespace Phoenix.ViewModels.EntityViewModel
     class ClientsViewModel : ViewModelBase
     {
         private readonly IRepository<Client> _clientsRepository;
+        private readonly IUserDialog<Client> _userDialog;
 
-        public ClientsViewModel(IRepository<Client> clientsRepository)
+        public ClientsViewModel(IRepository<Client> clientsRepository, IUserDialog<Client> userDialog)
         {
             _clientsRepository = clientsRepository;
+            _userDialog = userDialog;
         }
+
+        #region Выбронный клиент 
+
+        private Client _selectedClient;
+
+        public Client SelectedClient
+        {
+            get => _selectedClient;
+            set => Set(ref _selectedClient, value);
+        }
+
+        #endregion
+
+        #region Коллекция клиентов
+
         private ObservableCollection<Client> _clientsCollection;
 
         public ObservableCollection<Client> ClientsCollection
         {
             get => _clientsCollection;
-            set 
+            set
             {
-                if(Set(ref _clientsCollection, value))
+                if (Set(ref _clientsCollection, value))
                 {
                     _clientsViewSource = new CollectionViewSource
                     {
                         Source = value,
-                        SortDescriptions = {new SortDescription(nameof(Client.Name), ListSortDirection.Ascending)}
+                        SortDescriptions = { new SortDescription(nameof(Client.Name), ListSortDirection.Ascending) }
                     };
                     _clientsViewSource.Filter += OnClintsFilter;
                     _clientsViewSource.View.Refresh();
 
                     OnPropertyChanged(nameof(ClientsViewSource));
                 }
-            } 
+            }
         }
+        #endregion
+
         private CollectionViewSource _clientsViewSource;
 
         public ICollectionView ClientsViewSource => _clientsViewSource?.View;
@@ -74,6 +94,27 @@ namespace Phoenix.ViewModels.EntityViewModel
         private void OnLoadDataCommandExecuted(object obj)
         {
             ClientsCollection = new ObservableCollection<Client>(_clientsRepository.Items.ToArray());
+        }
+
+        #endregion
+
+        #region Команда добавления нового клиента
+
+        private ICommand _addNewClientCommand;
+        public ICommand AddNewClientCommand => _addNewClientCommand ??= new CommandHelper(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
+
+        private bool CanAddNewClientCommandExecute(object obj) => true;
+
+        private void OnAddNewClientCommandExecuted(object obj)
+        {
+            var newClient = new Client();
+
+            if (!_userDialog.Edit(newClient))
+                return;
+
+            _clientsCollection.Add(_clientsRepository.Add(newClient));
+
+            SelectedClient = newClient;
         }
 
         #endregion
