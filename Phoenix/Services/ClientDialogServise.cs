@@ -21,6 +21,9 @@ namespace Phoenix.Services
                 return false;
 
             client.Name = clientEditorModel.Name;
+            client.Surname = clientEditorModel.Surname;
+            client.Patronymic = clientEditorModel.Patronymic;
+            client.Phone = clientEditorModel.Phone;
 
             return true;
         }

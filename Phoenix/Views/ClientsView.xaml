@@ -28,12 +28,15 @@
                     </CollectionViewSource.SortDescriptions>
                 </CollectionViewSource>
             </GroupBox.Resources>
+            
             <DockPanel>
                 <TextBox DockPanel.Dock="Top" Text="{Binding ClientsFilter, UpdateSourceTrigger=PropertyChanged}"/>
+                
                 <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="3">
-                    <Button Content="Add" Margin="3" Command="{Binding AddNewClientCommand}"/>
-                    <Button Content="Delete" Margin="3" Command="{Binding}" CommandParameter="{Binding}"/>
+                    <Button Content="Добавить" Margin="3" Command="{Binding AddNewClientCommand}"/>
+                    <Button Content="Удалить" Margin="3" Command="{Binding}" CommandParameter="{Binding}"/>
                 </UniformGrid>
+                
                 <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
