@@ -9,23 +9,10 @@ using Phoenix.DAL.Context;
 
 #nullable disable
 
-namespace Phoenox.DAL.Migrations
+namespace Phoenix.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
-<<<<<<< HEAD
-<<<<<<< HEAD:Phoenix.DAL/Migrations/20230918125114_InitalCreate.Designer.cs
-    [Migration("20230918125114_InitalCreate")]
-    partial class InitalCreate
-=======
-    [Migration("20230814162817_Inital")]
-    partial class Inital
-=======
-<<<<<<< HEAD:Phoenox.DAL/Migrations/20230814163036_Inital.Designer.cs
-    [Migration("20230814163036_Inital")]
-=======
-    [Migration("20230814162817_Inital")]
->>>>>>> Переделал миграцию
->>>>>>> Переделал миграцию:Phoenox.DAL/Migrations/20230814162817_Inital.Designer.cs
+    [Migration("20230814164043_Inital")]
     partial class Inital
     {
         /// <inheritdoc />
@@ -67,13 +54,6 @@ namespace Phoenox.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-<<<<<<< HEAD
-                    b.Property<string>("Description")
-                        .HasColumnType("text")
-                        .HasColumnName("description");
-
-=======
->>>>>>> Переделал миграцию
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")
