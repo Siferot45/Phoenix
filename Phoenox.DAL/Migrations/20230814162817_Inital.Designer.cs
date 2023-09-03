@@ -17,8 +17,8 @@ namespace Phoenox.DAL.Migrations
     partial class InitalCreate
 =======
     [Migration("20230814162817_Inital")]
-    partial class Inital
 >>>>>>> Переделал миграцию:Phoenox.DAL/Migrations/20230814162817_Inital.Designer.cs
+    partial class Inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,7 @@ namespace Phoenox.DAL.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
@@ -77,6 +78,7 @@ namespace Phoenox.DAL.Migrations
                         .HasColumnName("phone");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 
@@ -136,10 +138,12 @@ namespace Phoenox.DAL.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 
