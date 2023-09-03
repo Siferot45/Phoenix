@@ -3,15 +3,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Phoenox.DAL.Migrations
+namespace Phoenix.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalCreate : Migration
+    public partial class Inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-             migrationBuilder.CreateTable(
+            migrationBuilder.CreateTable(
                 name: "categories",
                 columns: table => new
                 {
@@ -30,7 +30,6 @@ namespace Phoenox.DAL.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    description = table.Column<string>(type: "text", nullable: true),
                     phone = table.Column<long>(type: "bigint", nullable: true),
                     name = table.Column<string>(type: "text", nullable: false),
                     surname = table.Column<string>(type: "text", nullable: true),
