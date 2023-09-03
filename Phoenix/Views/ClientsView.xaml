@@ -34,10 +34,11 @@
                 
                 <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="3">
                     <Button Content="Добавить" Margin="3" Command="{Binding AddNewClientCommand}"/>
-                    <Button Content="Удалить" Margin="3" Command="{Binding}" CommandParameter="{Binding}"/>
+                    <Button Content="Удалить" Margin="3" Command="{Binding DeleteClientCommand}" CommandParameter="{Binding SelectedClient}"/>
                 </UniformGrid>
                 
-                <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}" d:ItemsSource="{d:SampleData ItemCount=5}"
+                         SelectedItem="{Binding SelectedClient}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>

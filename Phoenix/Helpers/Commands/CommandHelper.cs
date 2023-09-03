@@ -1,6 +1,5 @@
 ﻿using Phoenix.Helpers.Commands.Base;
 using System;
-using System.Threading.Tasks;
 
 namespace Phoenix.Helpers.Commands
 {
@@ -8,12 +7,6 @@ namespace Phoenix.Helpers.Commands
     {
         private readonly Action<object?> _execute;
         private readonly Func<object?, bool> _canExecute;
-        private readonly Func<object?, Task> _ExecuteAsync;
-
-        private readonly Func<object?, bool>? _CanExecuteAsync;
-
-        private volatile Task? _ExecutingTask;
-
 
         public CommandHelper(Action<object?> Execute, Func<object?, bool> CanExecute = null)
         {

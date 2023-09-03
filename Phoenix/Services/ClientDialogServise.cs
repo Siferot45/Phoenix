@@ -6,9 +6,9 @@ using Phoenix.Views.Windows;
 
 namespace Phoenix.Services
 {
-    internal class ClientDialogServise : IUserDialog<Client>
+    internal class ClientDialogServise : UserDialog<Client>
     {
-        public bool Edit(Client client)
+        public override bool Edit(Client client)
         {
             var clientEditorModel = new ClientEditorViewModel(client);
 

@@ -118,5 +118,28 @@ namespace Phoenix.ViewModels.EntityViewModel
         }
 
         #endregion
+
+        #region Команда удаления клиента
+
+        private ICommand _deleteClientCommand;
+        public ICommand DeleteClientCommand => _deleteClientCommand ??= new CommandHelperT<Client>(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);
+
+        private bool CanDeleteClientCommandExecute(Client c) => true; //c != null || SelectedClient != null;
+
+        private void OnDeleteClientCommandExecuted(Client c)
+        {
+            var clientToDelete = c ?? SelectedClient;
+
+            if (!_userDialog.ConfirmWarning($"Вы хотите удалить {clientToDelete.Name} {clientToDelete.Patronymic}?", "Удаление клиента"))
+                return;
+
+            _clientsRepository.Delete(clientToDelete.Id);
+
+            ClientsCollection.Remove(clientToDelete);
+
+            if (ReferenceEquals(SelectedClient, clientToDelete))
+                SelectedClient = null;
+        }
+        #endregion
     }
 }
