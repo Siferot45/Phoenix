@@ -37,7 +37,7 @@ namespace Phoenix.ViewModels
             set => Set(ref _patronymic, value);
         }
         #endregion
-        
+
         #region Телифон клиента 
 
         private long? _phone;

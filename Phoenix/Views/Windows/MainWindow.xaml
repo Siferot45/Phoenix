@@ -18,13 +18,13 @@
             <StatusBarItem>Потом сделать чтото</StatusBarItem>
         </StatusBar>
         <Grid>
-            <!--<Grid.Resources>
+            <Grid.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
                         <ResourceDictionary Source="../../Templates/ModelMainView.xaml"/>
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
-            </Grid.Resources>-->
+            </Grid.Resources>
             <ContentControl Content="{Binding CurrentModel}"/>
         </Grid>
     </DockPanel>

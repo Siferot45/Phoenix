@@ -14,7 +14,7 @@ namespace Phoenix.ViewModels.EntityViewModel.Base
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             var handlers = PropertyChanged;
-            if (handlers is null) 
+            if (handlers is null)
                 return;
 
             var invocationList = handlers.GetInvocationList();
@@ -29,7 +29,7 @@ namespace Phoenix.ViewModels.EntityViewModel.Base
 
         protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
-            if (Equals(field, value)) 
+            if (Equals(field, value))
                 return false;
 
             field = value;
@@ -75,7 +75,7 @@ namespace Phoenix.ViewModels.EntityViewModel.Base
         {
             if (!disposing || _disposed) return;
             _disposed = true;
-            
+
         }
     }
 }

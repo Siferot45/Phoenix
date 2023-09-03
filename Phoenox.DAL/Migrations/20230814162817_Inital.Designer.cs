@@ -2,18 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Phoenix.DAL.Context;
 
 #nullable disable
 
-namespace Phoenix.DAL.Migrations
+namespace Phoenox.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
-    partial class PhoenixDBModelSnapshot : ModelSnapshot
+    [Migration("20230814162817_Inital")]
+    partial class Inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,6 +60,7 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
@@ -65,6 +69,7 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("phone");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 
@@ -124,10 +129,12 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 

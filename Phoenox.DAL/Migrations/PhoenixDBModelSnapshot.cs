@@ -8,7 +8,7 @@ using Phoenix.DAL.Context;
 
 #nullable disable
 
-namespace Phoenix.DAL.Migrations
+namespace Phoenox.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
     partial class PhoenixDBModelSnapshot : ModelSnapshot
@@ -57,6 +57,7 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
@@ -65,6 +66,7 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("phone");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 
@@ -124,10 +126,12 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 

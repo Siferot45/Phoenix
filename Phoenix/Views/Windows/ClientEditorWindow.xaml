@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="ClientEditorWindow" 
         Height="200" Width="400"
-        d:DataContext="{d:DesignInstance vm:ClientEditorViewModel}">
+    d:DataContext="{d:DesignInstance vm:ClientEditorViewModel}">
     <DockPanel Margin="3">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center"
             Text="{Binding ClientId, StringFormat=Клиент ID:{0}}"/>

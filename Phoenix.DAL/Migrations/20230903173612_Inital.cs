@@ -32,8 +32,8 @@ namespace Phoenix.DAL.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     phone = table.Column<long>(type: "bigint", nullable: true),
                     name = table.Column<string>(type: "text", nullable: false),
-                    surname = table.Column<string>(type: "text", nullable: false),
-                    patronymic = table.Column<string>(type: "text", nullable: false)
+                    surname = table.Column<string>(type: "text", nullable: true),
+                    patronymic = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,8 +47,8 @@ namespace Phoenix.DAL.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "text", nullable: false),
-                    surname = table.Column<string>(type: "text", nullable: false),
-                    patronymic = table.Column<string>(type: "text", nullable: false)
+                    surname = table.Column<string>(type: "text", nullable: true),
+                    patronymic = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

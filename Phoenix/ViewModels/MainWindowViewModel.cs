@@ -34,7 +34,7 @@ namespace Phoenix.ViewModels
         private readonly IRepository<Client> _clients;
         private readonly IUserDialog<Client> _userDialog;
 
-        public MainWindowViewModel(IRepository<Massage> massages, IRepository<Client> clients,IUserDialog<Client> _UserDialog)
+        public MainWindowViewModel(IRepository<Massage> massages, IRepository<Client> clients, IUserDialog<Client> _UserDialog)
         {
             _massages = massages;
             _clients = clients;
