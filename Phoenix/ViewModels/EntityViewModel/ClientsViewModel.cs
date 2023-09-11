@@ -77,7 +77,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         }
         private void OnClintsFilter(object sender, FilterEventArgs filterEventArgs)
         {
-            if (!(filterEventArgs.Item is Client client) || string.IsNullOrEmpty(ClientsFilter))
+            if (filterEventArgs.Item is not Client client || string.IsNullOrEmpty(ClientsFilter))
                 return;
 
             if (!client.Name.Contains(ClientsFilter))

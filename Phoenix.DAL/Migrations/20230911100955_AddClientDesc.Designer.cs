@@ -12,8 +12,8 @@ using Phoenix.DAL.Context;
 namespace Phoenix.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
-    [Migration("20230814164043_Inital")]
-    partial class Inital
+    [Migration("20230911100955_AddClientDesc")]
+    partial class AddClientDesc
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,13 +54,16 @@ namespace Phoenix.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
@@ -69,7 +72,6 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("phone");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 
@@ -129,12 +131,10 @@ namespace Phoenix.DAL.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("Patronymic")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("patronymic");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("surname");
 

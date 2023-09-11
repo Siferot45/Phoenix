@@ -17,7 +17,7 @@ namespace Phoenix.Services
                 DataContext = clientEditorModel
             };
 
-            if(clientEditorWindow.ShowDialog() != true)
+            if (clientEditorWindow.ShowDialog() != true)
                 return false;
 
             client.Name = clientEditorModel.Name;
