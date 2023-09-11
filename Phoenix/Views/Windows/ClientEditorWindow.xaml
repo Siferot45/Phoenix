@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:Phoenix.ViewModels"
         mc:Ignorable="d"
         Title="ClientEditorWindow" 
-        Height="200" Width="400"
+        Height="220" Width="400"
     d:DataContext="{d:DesignInstance vm:ClientEditorViewModel}">
     <DockPanel Margin="3">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center"
@@ -41,9 +41,9 @@
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Отчество" Margin="0,5,5,0" VerticalAlignment="Center"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Телефон" Margin="0,5,5,0" VerticalAlignment="Center"/>
 
-            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Patronymic}" Margin="0,5,5,0"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" Margin="0,5,5,0"/>
             <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Surname}" Margin="0,5,5,0"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Name}" Margin="0,5,5,0"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Patronymic}" Margin="0,5,5,0"/>
             <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Phone}" Margin="0,5,5,0"/>
         </Grid>
     </DockPanel>
