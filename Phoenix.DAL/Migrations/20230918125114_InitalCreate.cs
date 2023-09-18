@@ -30,6 +30,7 @@ namespace Phoenix.DAL.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    description = table.Column<string>(type: "text", nullable: true),
                     phone = table.Column<long>(type: "bigint", nullable: true),
                     name = table.Column<string>(type: "text", nullable: false),
                     surname = table.Column<string>(type: "text", nullable: true),

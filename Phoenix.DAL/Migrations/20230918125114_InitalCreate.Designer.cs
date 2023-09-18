@@ -9,13 +9,11 @@ using Phoenix.DAL.Context;
 
 #nullable disable
 
-namespace Phoenox.DAL.Migrations
+namespace Phoenix.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
-
-    [Migration("20230911095258_InitalCreate")]
+    [Migration("20230918125114_InitalCreate")]
     partial class InitalCreate
-
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +53,10 @@ namespace Phoenox.DAL.Migrations
                         .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<string>("Name")
                         .IsRequired()
