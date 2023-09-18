@@ -1,13 +1,17 @@
 ﻿using Phoenix.DAL.Entityes;
-using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels;
 using Phoenix.Views.Windows;
 
 
 namespace Phoenix.Services
 {
-    internal class ClientDialogServise : UserDialog<Client>
+    internal class ClientDialogService : UserDialog<Client>
     {
+        /// <summary>
+        /// Вызов окна добавления и редактирования, установка в веденых значений
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns>bool</returns>
         public override bool Edit(Client client)
         {
             var clientEditorModel = new ClientEditorViewModel(client);
@@ -24,6 +28,7 @@ namespace Phoenix.Services
             client.Surname = clientEditorModel.Surname;
             client.Patronymic = clientEditorModel.Patronymic;
             client.Phone = clientEditorModel.Phone;
+            client.Description = clientEditorModel.Description;
 
             return true;
         }

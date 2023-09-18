@@ -48,6 +48,20 @@ namespace Phoenix.ViewModels
         }
         #endregion
 
+        #region Заметки о клиенте 
+
+        private string _description;
+        public string Description
+        {
+            get => _description;
+            set => Set(ref _description, value);
+        }
+        #endregion
+
+        /// <summary>
+        /// Конструктор с отображением ранние веденой информации о клиенте
+        /// </summary>
+        /// <param name="client"></param>
         public ClientEditorViewModel(Client client)
         {
             ClientId = client.Id;
@@ -55,6 +69,7 @@ namespace Phoenix.ViewModels
             Surname = client.Surname;
             Patronymic = client.Patronymic;
             Phone = client.Phone;
+            Description = client.Description;
         }
     }
 }
