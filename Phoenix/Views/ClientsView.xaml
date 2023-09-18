@@ -9,17 +9,21 @@
              xmlns:vm="clr-namespace:Phoenix.ViewModels.EntityViewModel"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type vm:ClientsViewModel}}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="1000">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Background="White">
+
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="250"/>
+            <ColumnDefinition Width="Auto" MinWidth="220" />
+            <ColumnDefinition Width="Auto" MinWidth="250" />
+            <ColumnDefinition Width="Auto" MinWidth="250" />
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
         <GroupBox Header="Клиенты">
             <GroupBox.Resources>
                 <CollectionViewSource x:Key="ClientsView" Source="{Binding ClientsCollection}">
@@ -28,28 +32,86 @@
                     </CollectionViewSource.SortDescriptions>
                 </CollectionViewSource>
             </GroupBox.Resources>
-            
+
             <DockPanel>
                 <TextBox DockPanel.Dock="Top" Text="{Binding ClientsFilter, UpdateSourceTrigger=PropertyChanged}"/>
-                
+
                 <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="3">
                     <Button Content="Добавить" Margin="3" Command="{Binding AddNewClientCommand}"/>
+                    <Button Content="Редактировать" Margin="3" Command="{Binding EditClientCommand}" CommandParameter="{Binding SelectedClient}"/>
                     <Button Content="Удалить" Margin="3" Command="{Binding DeleteClientCommand}" CommandParameter="{Binding SelectedClient}"/>
+
                 </UniformGrid>
-                
-                <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}" d:ItemsSource="{d:SampleData ItemCount=5}"
+
+                <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}"
                          SelectedItem="{Binding SelectedClient}">
+
                     <ListBox.ItemTemplate>
+
                         <DataTemplate>
                             <TextBlock>
-                                <TextBlock Text="{Binding Name}"/>
                                 <TextBlock Text="{Binding Surname}"/>
+                                <TextBlock Text="{Binding Name}"/>
                                 <TextBlock Text="{Binding Patronymic}"/>
                             </TextBlock>
                         </DataTemplate>
+
                     </ListBox.ItemTemplate>
                 </ListBox>
             </DockPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Header="Информация о клиенте" DataContext="{Binding SelectedClient}">
+
+            <DockPanel>
+                <Grid Margin="3" >
+
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Grid.Column" Value="0">
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter Property="Margin" Value="0,0,2,0"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Trigger>
+                                <Trigger Property="Grid.Column" Value="1">
+                                    <Setter Property="Margin" Value="2,0,0,0"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Resources>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Фамилия:"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Имя:"/>
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Отчество:"/>
+                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Телефон:"/>
+                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Заметки:"/>
+
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Surname}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Name}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Patronymic}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Phone}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap"  Text="{Binding Description}" Width="300"/>
+
+                </Grid>
+            </DockPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Header="Даты посещения">
+            <TextBlock Text="Подключить Визиты"/>
         </GroupBox>
     </Grid>
 </UserControl>
