@@ -21,7 +21,7 @@ namespace Phoenix.Data
         public async Task InitializeAsync()
         {
             //await _db.Database.EnsureDeletedAsync().ConfigureAwait(false);
-            await _db.Database.MigrateAsync().ConfigureAwait(false);
+            //await _db.Database.MigrateAsync().ConfigureAwait(false);
 
             if (await _db.Massages.AnyAsync())
                 return;
