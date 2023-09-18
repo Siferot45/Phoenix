@@ -25,11 +25,11 @@ namespace Phoenix.Data
 
             if (await _db.Massages.AnyAsync())
                 return;
-            //await SeedDataCategory();
-            //await SeedDataMassage();
-            //await SeedDataClient();
-            //await SeedDataMaster();
-            //await SeedDataVisit();
+            await SeedDataCategory();
+            await SeedDataMassage();
+            await SeedDataClient();
+            await SeedDataMaster();
+            await SeedDataVisit();
         }
         private Category[] _categories;
         #region Тестовые даные категории
@@ -133,13 +133,17 @@ namespace Phoenix.Data
                         Name = "qwer",
                         Surname = "qwer",
                         Patronymic = "qwer",
-                        Phone = 31231231
+                        Phone = 31231231,
+                        Age = 12,
+                        Description = "asd dddddddd dddddd ddd dddddd dddddddd  dddddd ddddddd dddddd dddddd ddd ddd dd ddddd asda",
                     },
                     new Client()
                     {
                         Name = "fghj",
                         Surname = "fghj",
                         Patronymic = "fghj",
+                        Age = 12,
+                        Description = "asd dddddddd dddddd ddd dddddd dddddddd  dddddd ddddddd dddddd dddddd ddd ddd dd ddddd asda",
                         Phone = 312321321
                     },
                     new Client()
@@ -147,6 +151,8 @@ namespace Phoenix.Data
                         Name = "zcasads",
                         Surname = "zcasads",
                         Patronymic = "zcasads",
+                        Age = 12,
+                        Description = "asd dddddddd dddddd ddd dddddd dddddddd  dddddd ddddddd dddddd dddddd ddd ddd dd ddddd asda",
                         Phone = 23424234
                     },
                     new Client()
@@ -154,6 +160,8 @@ namespace Phoenix.Data
                         Name = "awdadd",
                         Surname = "awdadd",
                         Patronymic = "awdadd",
+                        Age = 12,
+                        Description = "asd dddddddd dddddd ddd dddddd dddddddd  dddddd ddddddd dddddd dddddd ddd ddd dd ddddd asda",
                         Phone = 2131312453
                     },
                     new Client()
@@ -161,6 +169,8 @@ namespace Phoenix.Data
                         Name = "sdfgbdw",
                         Surname = "sdfgbdw",
                         Patronymic = "sdfgbdw",
+                        Age = 12,
+                        Description = "asd dddddddd dddddd ddd dddddd dddddddd  dddddd ddddddd dddddd dddddd ddd ddd dd ddddd asda",
                         Phone = 24235234324
                     },
                     new Client()
@@ -168,6 +178,8 @@ namespace Phoenix.Data
                         Name = "dadqewq",
                         Surname = "dadqewq",
                         Patronymic = "dadqewq",
+                        Age = 12,
+                        Description = "asd dddddddd dddddd ddd dddddd dddddddd  dddddd ddddddd dddddd dddddd ddd ddd dd ddddd asda",
                         Phone = 5654234232
                     },
                     new Client()
@@ -175,6 +187,8 @@ namespace Phoenix.Data
                         Name = "addadadad",
                         Surname = "addadadad",
                         Patronymic = "addadadad",
+                        Age = 12,
+                        Description = "asd dddddddd dddddd ddd dddddd dddddddd  dddddd ddddddd dddddd dddddd ddd ddd dd ddddd asda",
                         Phone = 565422334232
                     },
             };
