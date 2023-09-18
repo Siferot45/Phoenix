@@ -9,7 +9,7 @@ using Phoenix.DAL.Context;
 
 #nullable disable
 
-namespace Phoenix.DAL.Migrations
+namespace Phoenox.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
     [Migration("20230903173612_Inital")]
