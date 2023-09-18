@@ -7,7 +7,7 @@ namespace Phoenix.Services
     static class ServicesRegistrator
     {
         public static IServiceCollection AddServices(this IServiceCollection services) => services
-            .AddTransient<IUserDialog<Client>, ClientDialogServise>()
+            .AddTransient<IUserDialog<Client>, ClientDialogService>()
             ;
     }
 }

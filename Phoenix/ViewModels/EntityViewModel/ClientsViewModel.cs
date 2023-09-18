@@ -50,7 +50,7 @@ namespace Phoenix.ViewModels.EntityViewModel
                         Source = value,
                         SortDescriptions = { new SortDescription(nameof(Client.Name), ListSortDirection.Ascending) }
                     };
-                    _clientsViewSource.Filter += OnClintsFilter;
+                    _clientsViewSource.Filter += OnClientsFilter;
                     _clientsViewSource.View.Refresh();
 
                     OnPropertyChanged(nameof(ClientsViewSource));
@@ -75,7 +75,7 @@ namespace Phoenix.ViewModels.EntityViewModel
                     _clientsViewSource.View.Refresh();
             }
         }
-        private void OnClintsFilter(object sender, FilterEventArgs filterEventArgs)
+        private void OnClientsFilter(object sender, FilterEventArgs filterEventArgs)
         {
             if (filterEventArgs.Item is not Client client || string.IsNullOrEmpty(ClientsFilter))
                 return;
@@ -124,7 +124,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         private ICommand _deleteClientCommand;
         public ICommand DeleteClientCommand => _deleteClientCommand ??= new CommandHelperT<Client>(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);
 
-        private bool CanDeleteClientCommandExecute(Client c) => true; //c != null || SelectedClient != null;
+        private bool CanDeleteClientCommandExecute(Client c) => c != null || SelectedClient != null;
 
         private void OnDeleteClientCommandExecuted(Client c)
         {
@@ -140,6 +140,28 @@ namespace Phoenix.ViewModels.EntityViewModel
             if (ReferenceEquals(SelectedClient, clientToDelete))
                 SelectedClient = null;
         }
+        #endregion
+
+        #region Команда редактирования клиента
+
+        private ICommand _editClientCommand;
+        public ICommand EditClientCommand => _editClientCommand ??= new CommandHelperT<Client>(OnEditClientCommandExecuted, CanEditClientCommandExecute);
+        
+        private bool CanEditClientCommandExecute(Client c) => c != null || SelectedClient !=null;
+
+        private void OnEditClientCommandExecuted(Client c)
+        {
+            var newClient = SelectedClient;
+
+            if (!_userDialog.Edit(newClient))
+                return;
+            var oldClient = _clientsCollection.FirstOrDefault(c => c.Id == newClient.Id);
+            _clientsCollection.Remove(oldClient);
+            _clientsCollection.Add(newClient);
+            _clientsRepository.Update(newClient);
+            SelectedClient = newClient;
+        }
+
         #endregion
     }
 }
