@@ -2,18 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Phoenix.DAL.Context;
 
 #nullable disable
 
-namespace Phoenix.DAL.Migrations
+namespace Phoenox.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
-    partial class PhoenixDBModelSnapshot : ModelSnapshot
+    [Migration("20230918140642_AddDescriptioncClient")]
+    partial class AddDescriptioncClient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
