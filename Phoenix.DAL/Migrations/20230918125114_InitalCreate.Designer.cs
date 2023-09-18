@@ -20,11 +20,6 @@ namespace Phoenox.DAL.Migrations
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
-<<<<<<< HEAD
-#pragma warning disable 612, 618
-=======
-
->>>>>>> 986af703d1ce2888ff65b0ae1b3724681e732fed
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
@@ -234,11 +229,7 @@ namespace Phoenox.DAL.Migrations
                 {
                     b.Navigation("Massage");
                 });
-<<<<<<< HEAD
-#pragma warning restore 612, 618
-=======
 
->>>>>>> 986af703d1ce2888ff65b0ae1b3724681e732fed
         }
     }
 }
