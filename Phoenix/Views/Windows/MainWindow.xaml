@@ -10,7 +10,7 @@
         Title="{Binding Title}"
         Height="450" Width="800">
     <DockPanel>
-        <Menu IsMainMenu="True">
+        <!--<Menu IsMainMenu="True">
             <MenuItem Header="Массажи" Command="{Binding ShowMassageViewCommand}"/>
             <MenuItem Header="Клиенты" Command="{Binding ShowClientsViewCommand}"/>
         </Menu>
@@ -26,6 +26,6 @@
                 </ResourceDictionary>
             </Grid.Resources>
             <ContentControl Content="{Binding CurrentModel}"/>
-        </Grid>
+        </Grid>-->
     </DockPanel>
 </Window>
