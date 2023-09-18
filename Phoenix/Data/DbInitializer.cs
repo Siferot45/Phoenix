@@ -25,11 +25,11 @@ namespace Phoenix.Data
 
             if (await _db.Massages.AnyAsync())
                 return;
-            //await SeedDataCategory();
-            //await SeedDataMassage();
-            //await SeedDataClient();
-            //await SeedDataMaster();
-            //await SeedDataVisit();
+            await SeedDataCategory();
+            await SeedDataMassage();
+            await SeedDataClient();
+            await SeedDataMaster();
+            await SeedDataVisit();
         }
         private Category[] _categories;
         #region Тестовые даные категории
