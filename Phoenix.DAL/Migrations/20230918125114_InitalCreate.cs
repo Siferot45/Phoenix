@@ -11,11 +11,8 @@ namespace Phoenox.DAL.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-<<<<<<< HEAD
              migrationBuilder.CreateTable(
-=======
-            migrationBuilder.CreateTable(
->>>>>>> 986af703d1ce2888ff65b0ae1b3724681e732fed
+
                 name: "categories",
                 columns: table => new
                 {
