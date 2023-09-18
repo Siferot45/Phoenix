@@ -12,6 +12,7 @@ using Phoenix.DAL.Context;
 namespace Phoenox.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
+<<<<<<< HEAD
 <<<<<<< HEAD:Phoenix.DAL/Migrations/20230918125114_InitalCreate.Designer.cs
     [Migration("20230918125114_InitalCreate")]
     partial class InitalCreate
@@ -19,6 +20,15 @@ namespace Phoenox.DAL.Migrations
     [Migration("20230814162817_Inital")]
     partial class Inital
 >>>>>>> Переделал миграцию:Phoenox.DAL/Migrations/20230814162817_Inital.Designer.cs
+=======
+<<<<<<<< HEAD:Phoenix.DAL/Migrations/20230918125114_InitalCreate.Designer.cs
+    [Migration("20230918125114_InitalCreate")]
+    partial class InitalCreate
+========
+    [Migration("20230814162817_Inital")]
+    partial class Inital
+>>>>>>>> 1525db79869cb129aabf0e27f06d1ee7b78d7286:Phoenox.DAL/Migrations/20230814162817_Inital.Designer.cs
+>>>>>>> 986af703d1ce2888ff65b0ae1b3724681e732fed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

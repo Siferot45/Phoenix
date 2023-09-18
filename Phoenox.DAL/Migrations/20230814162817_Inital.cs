@@ -5,7 +5,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Phoenox.DAL.Migrations
 {
+<<<<<<< HEAD
     /// <inheritdoc />
+=======
+    /// <inheritdoc >
+>>>>>>> 986af703d1ce2888ff65b0ae1b3724681e732fed
     public partial class InitalCreate : Migration
     {
         /// <inheritdoc />
