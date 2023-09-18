@@ -9,11 +9,13 @@ using Phoenix.DAL.Context;
 
 #nullable disable
 
-namespace Phoenix.DAL.Migrations
+namespace Phoenox.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
+
     [Migration("20230911095258_InitalCreate")]
     partial class InitalCreate
+
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
