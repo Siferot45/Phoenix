@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Phoenix.DAL/Migrations/20230918125114_InitalCreate.cs
+/Phoenix.DAL/Migrations/20230903173612_Inital.Designer.cs
+/Phoenox.DAL/Migrations/20230814162817_Inital.Designer.cs
+/Phoenox.DAL/Migrations/20230814162817_Inital.cs

@@ -12,11 +12,7 @@ using Phoenix.DAL.Context;
 namespace Phoenox.DAL.Migrations
 {
     [DbContext(typeof(PhoenixDB))]
-<<<<<<< HEAD:Phoenox.DAL/Migrations/20230814163036_Inital.Designer.cs
     [Migration("20230814163036_Inital")]
-=======
-    [Migration("20230814162817_Inital")]
->>>>>>> Переделал миграцию:Phoenox.DAL/Migrations/20230814162817_Inital.Designer.cs
     partial class Inital
     {
         /// <inheritdoc />
