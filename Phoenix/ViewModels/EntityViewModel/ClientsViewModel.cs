@@ -144,8 +144,8 @@ namespace Phoenix.ViewModels.EntityViewModel
 
         private ICommand _editClientCommand;
         public ICommand EditClientCommand => _editClientCommand ??= new CommandHelperT<Client>(OnEditClientCommandExecuted, CanEditClientCommandExecute);
-        
-        private bool CanEditClientCommandExecute(Client c) => c != null || SelectedClient !=null;
+
+        private bool CanEditClientCommandExecute(Client c) => c != null || SelectedClient != null;
 
         private void OnEditClientCommandExecuted(Client c)
         {

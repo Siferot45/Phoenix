@@ -4,7 +4,6 @@ using Phoenix.Interfaces;
 using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel;
 using Phoenix.ViewModels.EntityViewModel.Base;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Phoenix.ViewModels
@@ -32,14 +31,17 @@ namespace Phoenix.ViewModels
 
         private readonly IRepository<Massage> _massages;
         private readonly IRepository<Client> _clients;
-        private readonly IUserDialog<Client> _userDialog;
+        private readonly IUserDialog<Client> _userClientDialog;
+        private readonly IUserDialog<Massage> _userMassageDialog;
 
-        public MainWindowViewModel(IRepository<Massage> massages, IRepository<Client> clients, IUserDialog<Client> _UserDialog)
+        public MainWindowViewModel(IRepository<Massage> massages, IRepository<Client> clients, IUserDialog<Client> userClientDialog, IUserDialog<Massage> userMassageDialog)
         {
             _massages = massages;
             _clients = clients;
-            _userDialog = _UserDialog;
+            _userClientDialog = userClientDialog;
+            _userMassageDialog = userMassageDialog;
         }
+        #region Команда показа окна массажей
 
         private ICommand _showMassageViewCommand;
 
@@ -50,8 +52,10 @@ namespace Phoenix.ViewModels
 
         private void OnShowMassageViewCommandExecute(object obj)
         {
-            CurrentModel = new MassageViewModel(_massages);
+            CurrentModel = new MassageViewModel(_massages, _userMassageDialog);
         }
+        #endregion
+
 
         #region Команда покказа окна клиентов
 
@@ -64,7 +68,7 @@ namespace Phoenix.ViewModels
 
         private void OnShowClientsViewCommandExecuted(object obj)
         {
-            CurrentModel = new ClientsViewModel(_clients, _userDialog);
+            CurrentModel = new ClientsViewModel(_clients, _userClientDialog);
         }
 
         #endregion

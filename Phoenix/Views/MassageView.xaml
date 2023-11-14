@@ -29,6 +29,13 @@
             </GroupBox.Resources>
 
             <DockPanel>
+
+                <UniformGrid DockPanel.Dock="Bottom" Rows="1">
+                    <Button Content="Добавить" Margin="3" Command="{Binding AddNewMassageCommand}"/>
+                    <Button Content="Редактировать" Margin="3" Command="{Binding EditMassageCommand}"/>
+                    <Button Content="Удалить" Margin="3" Command="{Binding DeleteMassageCommand}"/>
+                </UniformGrid>
+                
                 <ListBox MinWidth="100" ItemsSource="{Binding MassagesCollection}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -40,6 +47,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                
             </DockPanel>
             
         </GroupBox>

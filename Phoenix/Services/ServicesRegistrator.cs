@@ -8,6 +8,7 @@ namespace Phoenix.Services
     {
         public static IServiceCollection AddServices(this IServiceCollection services) => services
             .AddTransient<IUserDialog<Client>, ClientDialogService>()
+            .AddTransient<IUserDialog<Massage>, MassageDialogService>()
             ;
     }
 }

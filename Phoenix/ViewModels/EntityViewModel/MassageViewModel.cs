@@ -115,4 +115,4 @@ namespace Phoenix.ViewModels.EntityViewModel
         }
         #endregion
     }
-    }
+}
