@@ -66,10 +66,10 @@ namespace Phoenix.ViewModels
         {
             ClientId = client.Id;
             Name = client.Name;
-            Surname = client.Surname;
-            Patronymic = client.Patronymic;
-            Phone = client.Phone;
-            Description = client.Description;
+            Surname = client?.Surname;
+            Patronymic = client?.Patronymic;
+            Phone = client?.Phone;
+            Description = client?.Description;
         }
     }
 }

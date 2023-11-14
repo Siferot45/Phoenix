@@ -9,7 +9,7 @@
              xmlns:vm="clr-namespace:Phoenix.ViewModels.EntityViewModel"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance {x:Type vm:ClientsViewModel}}"
-             d:DesignHeight="500" d:DesignWidth="1000">
+             d:DesignHeight="500" d:DesignWidth="820">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
@@ -18,13 +18,12 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="220" />
-            <ColumnDefinition Width="Auto" MinWidth="250" />
-            <ColumnDefinition Width="Auto" MinWidth="250" />
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Клиенты">
+        <GroupBox Header="Клиенты" FontSize="15">
             <GroupBox.Resources>
                 <CollectionViewSource x:Key="ClientsView" Source="{Binding ClientsCollection}">
                     <CollectionViewSource.SortDescriptions>
@@ -40,14 +39,12 @@
                     <Button Content="Добавить" Margin="3" Command="{Binding AddNewClientCommand}"/>
                     <Button Content="Редактировать" Margin="3" Command="{Binding EditClientCommand}" CommandParameter="{Binding SelectedClient}"/>
                     <Button Content="Удалить" Margin="3" Command="{Binding DeleteClientCommand}" CommandParameter="{Binding SelectedClient}"/>
-
                 </UniformGrid>
 
                 <ListBox MinWidth="100" ItemsSource="{Binding ClientsViewSource}"
                          SelectedItem="{Binding SelectedClient}">
 
                     <ListBox.ItemTemplate>
-
                         <DataTemplate>
                             <TextBlock>
                                 <TextBlock Text="{Binding Surname}"/>
@@ -55,15 +52,15 @@
                                 <TextBlock Text="{Binding Patronymic}"/>
                             </TextBlock>
                         </DataTemplate>
-
                     </ListBox.ItemTemplate>
                 </ListBox>
             </DockPanel>
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Header="Информация о клиенте" DataContext="{Binding SelectedClient}">
+        <GroupBox Grid.Column="1" Header="Информация о клиенте" FontSize="15" DataContext="{Binding SelectedClient}">
 
             <DockPanel>
+           
                 <Grid Margin="3" >
 
                     <Grid.Resources>
@@ -83,7 +80,8 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -107,11 +105,18 @@
                     <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap"  Text="{Binding Description}" Width="300"/>
 
                 </Grid>
+                
             </DockPanel>
+            
         </GroupBox>
 
         <GroupBox Grid.Column="2" Header="Даты посещения">
-            <TextBlock Text="Подключить Визиты"/>
+            <DockPanel>
+               
+                <Grid>
+                    <TextBlock Text="Подключить Визиты" Background="#FFECE9E9"/>
+                </Grid>
+            </DockPanel>
         </GroupBox>
     </Grid>
 </UserControl>

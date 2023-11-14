@@ -3,25 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:local="clr-namespace:Phoenix.Views"
+             xmlns:vm="clr-namespace:Phoenix.ViewModels.EntityViewModel"
+             d:DataContext="{d:DesignInstance Type=vm:MassageViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Массажи">
+        
+        <GroupBox Header="Список массажей" FontSize="15" Margin="5">
+            
             <GroupBox.Resources>
-                <CollectionViewSource x:Key="MassageView" Source="{Binding Massages}">
-                    
-                </CollectionViewSource>
-            </GroupBox.Resources> 
+                <CollectionViewSource x:Key="MassagesView" Source="{Binding MassagesCollection}"/>
+            </GroupBox.Resources>
+
+            <DockPanel>
+                <ListBox MinWidth="100" ItemsSource="{Binding MassagesCollection}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding Duration}"/>
+                                <TextBlock Text="{Binding Description}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+            
         </GroupBox>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="massage" FontSize="30" FontWeight="Black">
-            <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="5"/>
-            </TextBlock.Effect>
-        </TextBlock>
     </Grid>
 </UserControl>

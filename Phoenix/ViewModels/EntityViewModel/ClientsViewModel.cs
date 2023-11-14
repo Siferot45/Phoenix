@@ -113,8 +113,6 @@ namespace Phoenix.ViewModels.EntityViewModel
                 return;
 
             _clientsCollection.Add(_clientsRepository.Add(newClient));
-
-            SelectedClient = newClient;
         }
 
         #endregion
@@ -135,7 +133,7 @@ namespace Phoenix.ViewModels.EntityViewModel
 
             _clientsRepository.Delete(clientToDelete.Id);
 
-            ClientsCollection.Remove(clientToDelete);
+            _clientsCollection.Remove(clientToDelete);
 
             if (ReferenceEquals(SelectedClient, clientToDelete))
                 SelectedClient = null;
