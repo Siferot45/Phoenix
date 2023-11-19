@@ -42,6 +42,7 @@ namespace Phoenix.ViewModels
         public MassageEditorViewModel(Massage massage)
         {
             MassageId = massage.Id;
+            Name = massage.Name;
             Duration = massage?.Duration;
             Description = massage?.Description;
         }

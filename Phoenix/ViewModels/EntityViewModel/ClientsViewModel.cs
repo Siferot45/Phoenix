@@ -153,7 +153,9 @@ namespace Phoenix.ViewModels.EntityViewModel
 
             if (!_userDialog.Edit(newClient))
                 return;
+
             var oldClient = _clientsCollection.FirstOrDefault(c => c.Id == newClient.Id);
+
             _clientsCollection.Remove(oldClient);
             _clientsCollection.Add(newClient);
             _clientsRepository.Update(newClient);

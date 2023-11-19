@@ -30,7 +30,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         }
         #endregion
 
-        #region Выбронный клиент
+        #region Выбронный массаж
 
         private Massage _selectedMassage;
         public Massage SelectedMassage 
@@ -108,7 +108,6 @@ namespace Phoenix.ViewModels.EntityViewModel
 
             _massagesCollection.Remove(oldMassage);
             _massagesCollection.Add(newMassage);
-
             _massageRepository.Update(newMassage);
 
             SelectedMassage = newMassage;

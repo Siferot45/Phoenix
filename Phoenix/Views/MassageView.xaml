@@ -36,7 +36,7 @@
                     <Button Content="Удалить" Margin="3" Command="{Binding DeleteMassageCommand}"/>
                 </UniformGrid>
                 
-                <ListBox MinWidth="100" ItemsSource="{Binding MassagesCollection}">
+                <ListBox MinWidth="100" ItemsSource="{Binding MassagesCollection}" SelectedItem="{Binding SelectedMassage}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
