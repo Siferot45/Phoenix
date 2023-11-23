@@ -34,6 +34,7 @@
 
             <DockPanel>
                 <TextBox DockPanel.Dock="Top" Text="{Binding ClientsFilter, UpdateSourceTrigger=PropertyChanged}"/>
+                
 
                 <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="3">
                     <Button Content="Добавить" Margin="3" Command="{Binding AddNewClientCommand}"/>
@@ -103,11 +104,8 @@
                     <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Patronymic}"/>
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Phone}"/>
                     <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap"  Text="{Binding Description}" Width="300"/>
-
                 </Grid>
-                
             </DockPanel>
-            
         </GroupBox>
 
         <GroupBox Grid.Column="2" Header="Даты посещения">
@@ -115,6 +113,7 @@
                
                 <Grid>
                     <TextBlock Text="Подключить Визиты" Background="#FFECE9E9"/>
+                    
                 </Grid>
             </DockPanel>
         </GroupBox>

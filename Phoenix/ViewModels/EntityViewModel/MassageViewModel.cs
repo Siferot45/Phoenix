@@ -3,24 +3,27 @@ using Phoenix.Helpers.Commands;
 using Phoenix.Interfaces;
 using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel.Base;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace Phoenix.ViewModels.EntityViewModel
 {
     class MassageViewModel : ViewModelBase
     {
+        public List<string> CategoryName;
         private readonly IRepository<Massage> _massageRepository;
         private readonly IUserDialog<Massage> _userDialog;
 
         public MassageViewModel(IRepository<Massage> massageRepository, IUserDialog<Massage> userDialog)
         {
             _massageRepository = massageRepository;
-            _userDialog = userDialog;
+            _userDialog = userDialog;     
         }
 
-        #region Колекция массажистов
+        #region Колекция массажей
 
         private ObservableCollection<Massage> _massagesCollection;
         public ObservableCollection<Massage> MassagesCollection
@@ -57,14 +60,13 @@ namespace Phoenix.ViewModels.EntityViewModel
 
         private ICommand _addNewMassageCommand;
         public ICommand AddNewMassageCommand => _addNewMassageCommand ??= new CommandHelper(OnAddNewMassageCommandExecuted, CanAddNewMassageCommandExecute);
-
         private bool CanAddNewMassageCommandExecute(object odj) => true;
-
         private void OnAddNewMassageCommandExecuted(object odj)
         {
+            CategoryName = MassagesCategoryName();
             var newMassage = new Massage();
 
-            if (!_userDialog.Edit(newMassage))
+            if (!_userDialog.Add(newMassage, CategoryName))
                 return;
 
             _massagesCollection.Add(_massageRepository.Add(newMassage));
@@ -113,5 +115,19 @@ namespace Phoenix.ViewModels.EntityViewModel
             SelectedMassage = newMassage;
         }
         #endregion
+        /// <summary>
+        /// Извлекает из коллекции массажей имена категорий
+        /// </summary>
+        /// <returns></returns>
+        public List<string> MassagesCategoryName()
+        {
+            List<string> categoryName = new ();
+
+            foreach (var m in _massagesCollection)
+            {
+                categoryName.Add (m.Category?.Name);
+            }
+            return categoryName;
+        }
     }
 }

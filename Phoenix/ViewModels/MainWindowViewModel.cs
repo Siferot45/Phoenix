@@ -4,7 +4,9 @@ using Phoenix.Interfaces;
 using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel;
 using Phoenix.ViewModels.EntityViewModel.Base;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Phoenix.ViewModels
 {

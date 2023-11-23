@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Markup;
@@ -8,7 +7,7 @@ using System.Xaml;
 
 namespace Phoenix.ViewModels.EntityViewModel.Base
 {
-    internal abstract class ViewModelBase : MarkupExtension, INotifyPropertyChanged, IDisposable
+    internal abstract class ViewModelBase : INotifyPropertyChanged//, IDisposable MarkupExtension,
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -38,45 +37,45 @@ namespace Phoenix.ViewModels.EntityViewModel.Base
             return true;
         }
 
-        public override object ProvideValue(IServiceProvider sp)
-        {
-            var valueTargetService = sp.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
-            var rootObjectService = sp.GetService(typeof(IRootObjectProvider)) as IRootObjectProvider;
+        //public override object ProvideValue(IServiceProvider sp)
+        //{
+        //    var valueTargetService = sp.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
+        //    var rootObjectService = sp.GetService(typeof(IRootObjectProvider)) as IRootObjectProvider;
 
-            OnInitialized(
-                valueTargetService?.TargetObject,
-                valueTargetService?.TargetProperty,
-                rootObjectService?.RootObject);
+        //    OnInitialized(
+        //        valueTargetService?.TargetObject,
+        //        valueTargetService?.TargetProperty,
+        //        rootObjectService?.RootObject);
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        private WeakReference _targetRef;
-        private WeakReference _rootRef;
+        //private WeakReference _targetRef;
+        //private WeakReference _rootRef;
 
-        public object TargetObject => _targetRef.Target;
+        //public object TargetObject => _targetRef.Target;
 
-        public object RootObject => _rootRef.Target;
+        //public object RootObject => _rootRef.Target;
 
-        protected virtual void OnInitialized(object target, object property, object root)
-        {
-            _targetRef = new WeakReference(target);
-            _rootRef = new WeakReference(root);
-        }
+        //protected virtual void OnInitialized(object target, object property, object root)
+        //{
+        //    _targetRef = new WeakReference(target);
+        //    _rootRef = new WeakReference(root);
+        //}
 
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+        //public void Dispose()
+        //{
+        //    Dispose(true);
+        //}
 
-        private bool _disposed;
+        //private bool _disposed;
 
-        // Освобождение управляемых ресурсов
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposing || _disposed) return;
-            _disposed = true;
+        //// Освобождение управляемых ресурсов
+        //protected virtual void Dispose(bool disposing)
+        //{
+        //    if (!disposing || _disposed) return;
+        //    _disposed = true;
 
-        }
+        //}
     }
 }
