@@ -1,6 +1,7 @@
 ﻿using Phoenix.DAL.Entityes;
 using Phoenix.ViewModels;
 using Phoenix.Views.Windows;
+using System.Collections.ObjectModel;
 
 namespace Phoenix.Services
 {
@@ -14,7 +15,7 @@ namespace Phoenix.Services
         /// </summary>
         /// <param name="client"></param>
         /// <returns>bool</returns>
-        public override bool Edit(Client client)
+        public override bool ShowEditWindow(Client client, ObservableCollection<Client> entityCollection)
         {
             var clientEditorModel = new ClientEditorViewModel(client);
 

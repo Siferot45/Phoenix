@@ -3,17 +3,14 @@ using Phoenix.Helpers.Commands;
 using Phoenix.Interfaces;
 using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel.Base;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace Phoenix.ViewModels.EntityViewModel
 {
     class MassageViewModel : ViewModelBase
     {
-        public List<string> CategoryName;
         private readonly IRepository<Massage> _massageRepository;
         private readonly IUserDialog<Massage> _userDialog;
 
@@ -63,10 +60,9 @@ namespace Phoenix.ViewModels.EntityViewModel
         private bool CanAddNewMassageCommandExecute(object odj) => true;
         private void OnAddNewMassageCommandExecuted(object odj)
         {
-            CategoryName = MassagesCategoryName();
             var newMassage = new Massage();
 
-            if (!_userDialog.Add(newMassage, CategoryName))
+            if (!_userDialog.ShowEditWindow(newMassage, _massagesCollection))
                 return;
 
             _massagesCollection.Add(_massageRepository.Add(newMassage));
@@ -92,7 +88,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         }
         #endregion
 
-        #region Команда редактирования клиента
+        #region Команда редактирования массажа
 
         private ICommand _editMassageCommand;
         public ICommand EditMassageCommand => _editMassageCommand ??= new CommandHelperT<Massage>(OnEditMassageCommandExecuted, CanEditMassageCommandExecute);
@@ -103,7 +99,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         {
             var newMassage = SelectedMassage;
 
-            if (!_userDialog.Edit(newMassage))
+            if (!_userDialog.ShowEditWindow(newMassage, MassagesCollection))
                 return;
 
             var oldMassage = _massagesCollection.FirstOrDefault(m => m.Id == newMassage.Id);
@@ -115,19 +111,5 @@ namespace Phoenix.ViewModels.EntityViewModel
             SelectedMassage = newMassage;
         }
         #endregion
-        /// <summary>
-        /// Извлекает из коллекции массажей имена категорий
-        /// </summary>
-        /// <returns></returns>
-        public List<string> MassagesCategoryName()
-        {
-            List<string> categoryName = new ();
-
-            foreach (var m in _massagesCollection)
-            {
-                categoryName.Add (m.Category?.Name);
-            }
-            return categoryName;
-        }
     }
 }

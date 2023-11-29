@@ -109,7 +109,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         {
             var newClient = new Client();
 
-            if (!_userDialog.Edit(newClient))
+            if (!_userDialog.ShowEditWindow(newClient, ClientsCollection))
                 return;
 
             _clientsCollection.Add(_clientsRepository.Add(newClient));
@@ -151,7 +151,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         {
             var newClient = SelectedClient;
 
-            if (!_userDialog.Edit(newClient))
+            if (!_userDialog.ShowEditWindow(newClient, ClientsCollection))
                 return;
 
             var oldClient = _clientsCollection.FirstOrDefault(c => c.Id == newClient.Id);

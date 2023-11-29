@@ -1,13 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Markup;
 using System.Windows.Threading;
-using System.Xaml;
 
 namespace Phoenix.ViewModels.EntityViewModel.Base
 {
-    internal abstract class ViewModelBase : INotifyPropertyChanged//, IDisposable MarkupExtension,
+    internal abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

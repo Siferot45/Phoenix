@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Phoenix.ViewModels"
         mc:Ignorable="d"
         Title="MassageEditorWindow" 
-        Height="290" Width="400"
+        Height="290" Width="550"
         d:DataContext="{d:DesignInstance vm:MassageEditorViewModel}">
 
     <DockPanel Margin="3">
@@ -29,7 +29,7 @@
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="266.48"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -45,10 +45,10 @@
             <TextBlock Grid.Column="0" Grid.Row="3" Margin="0,5,5,0" Text="Описание" VerticalAlignment="Center"/>
 
             <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" Margin="0,5,5,0"/>
-            <ComboBox Grid.Column="1" Grid.Row="1" Margin="0,5,5,0" Text="{Binding Category}" ItemsSource="{Binding CategoryName}"/>
-            <!--<TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Category}" Margin="0,5,5,0"/>-->
+            <TextBlock  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="297" Text="{Binding Category}" Margin="0,5,70,0"/>
+            <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Изменить" Command="{Binding ShowCategoryCommand}" Width="100" Margin="0,5,5,0"/>
             <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Duration}" Margin="0,5,5,0"/>
-            <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Text="{Binding Description}" Margin="0,5,5,0"/>
+            <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Text="{Binding Description}" Width="400" Margin="0,5,5,-70"/>
         </Grid>
     </DockPanel>
 </Window>

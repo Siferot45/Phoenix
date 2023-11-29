@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <Style TargetType="Menu">
         <Style.Triggers>
             <Trigger Property="IsMainMenu" Value="True">
@@ -7,7 +8,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style TargetType="StatusBar">
         <Setter Property="DockPanel.Dock" Value="Bottom"/>
     </Style>
+    
 </ResourceDictionary>
