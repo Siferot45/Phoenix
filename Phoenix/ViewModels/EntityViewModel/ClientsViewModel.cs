@@ -17,7 +17,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         private readonly IUserDialog<Client> _userDialog;
 
         public ClientsViewModel(IRepository<Client> clientsRepository, IUserDialog<Client> userDialog)
-        {           
+        {
             _clientsRepository = clientsRepository;
             _userDialog = userDialog;
         }

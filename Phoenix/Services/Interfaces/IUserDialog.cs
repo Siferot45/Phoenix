@@ -1,7 +1,4 @@
-﻿using Phoenix.DAL.Entityes;
-using Phoenix.Interfaces;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace Phoenix.Services.Interfaces
 {
@@ -24,11 +21,6 @@ namespace Phoenix.Services.Interfaces
         /// <param name="entity"></param>
         /// <returns></returns>
         bool ShowEditWindow(T entity, ObservableCollection<T> entityCollection);
-        /// <summary>
-        /// Обращение к окну категорий  
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        bool ShowCategoryWindow(List<T> categoryList);
+
     }
 }

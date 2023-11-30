@@ -1,15 +1,15 @@
 ﻿using Phoenix.DAL.Entityes;
-using Phoenix.Helpers.Commands;
+using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel.Base;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Input;
 
 namespace Phoenix.ViewModels
 {
     class MassageEditorViewModel : ViewModelBase
     {
+        private readonly IUserDialog<Category> _userCategoryDialog;
         public int MassageId { get; }
 
         #region Колеция массажей
@@ -30,7 +30,7 @@ namespace Phoenix.ViewModels
             set => Set(ref _name, value);
         }
         #endregion
-
+        public List<Category> categoryCollection { get; set; }
         #region Категория массажа
         private string? _category;
         public string? Category
@@ -65,37 +65,25 @@ namespace Phoenix.ViewModels
         /// Конструктор с отображением ранние веденой информации о массаже
         /// </summary>
         public MassageEditorViewModel(Massage massage, ObservableCollection<Massage> massageCollection)
-        {
+        { 
             _massageCollection = massageCollection;
+            categoryCollection = GetCategoryCollection(_massageCollection);
             MassageId = massage.Id;
             Name = massage.Name;
-            //Category = massage?.Category?.Name;
+            Category = massage?.Category?.Name;
             Duration = massage?.Duration;
             Description = massage?.Description;
         }
 
-        #region Команда показа окна редактирования категорий
-
-        private ICommand _showCategoryCommand;
-        public ICommand ShowCategoryCommand => _showCategoryCommand ??= new CommandHelper(OnShowCategoryCommandExecuted, CanShowCategoryCommandExecute);
-
-        private bool CanShowCategoryCommandExecute(object odj) => true;
-
-        private void OnShowCategoryCommandExecuted(object odj)
+        #region Фильтр массажей
+        /// <summary>
+        /// Забирает из коллекции массажей категории
+        /// </summary>
+        /// <param name="massageCollection">ObservableCollection<Massage></param>
+        /// <returns>List<Category></returns>
+        public List<Category> GetCategoryCollection(ObservableCollection<Massage> massageCollection)
         {
-            var categoryMassage = GetCategoryCollection(_massageCollection);
-
-        }
-        #endregion
-
-        #region MyRegion
-
-        public List<Category>GetCategoryCollection(ObservableCollection<Massage> massageCollection)
-        {
-            //List<Category> categoryCollection = new List<Category>();
-            var filterCollection = massageCollection.OfType<Category>;
-
-            List<Category> categoryCollection = massageCollection.Select(e => e.Category).ToList();
+            categoryCollection = massageCollection.Select(e => e.Category).ToList();
             return categoryCollection;
         }
         #endregion

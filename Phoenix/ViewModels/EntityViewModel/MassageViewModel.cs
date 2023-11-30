@@ -12,12 +12,13 @@ namespace Phoenix.ViewModels.EntityViewModel
     class MassageViewModel : ViewModelBase
     {
         private readonly IRepository<Massage> _massageRepository;
-        private readonly IUserDialog<Massage> _userDialog;
+        private readonly IUserDialog<Massage> _userMassageDialog;
 
-        public MassageViewModel(IRepository<Massage> massageRepository, IUserDialog<Massage> userDialog)
+        public MassageViewModel(IRepository<Massage> massageRepository,     
+                                IUserDialog<Massage> userMassageDialog)
         {
             _massageRepository = massageRepository;
-            _userDialog = userDialog;     
+            _userMassageDialog = userMassageDialog;     
         }
 
         #region Колекция массажей
@@ -62,7 +63,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         {
             var newMassage = new Massage();
 
-            if (!_userDialog.ShowEditWindow(newMassage, _massagesCollection))
+            if (!_userMassageDialog.ShowEditWindow(newMassage, _massagesCollection))
                 return;
 
             _massagesCollection.Add(_massageRepository.Add(newMassage));
@@ -80,7 +81,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         {
             var massageToDelete = m ?? SelectedMassage;
 
-            if (!_userDialog.ConfirmWarning($"Вы хотите удалить {massageToDelete.Name} категории {massageToDelete.Category}?", "Удаление массажа")) 
+            if (!_userMassageDialog.ConfirmWarning($"Вы хотите удалить {massageToDelete.Name} категории {massageToDelete.Category}?", "Удаление массажа")) 
                 return;
 
             _massageRepository.Delete(massageToDelete.Id);
@@ -99,7 +100,7 @@ namespace Phoenix.ViewModels.EntityViewModel
         {
             var newMassage = SelectedMassage;
 
-            if (!_userDialog.ShowEditWindow(newMassage, MassagesCollection))
+            if (!_userMassageDialog.ShowEditWindow(newMassage, MassagesCollection))
                 return;
 
             var oldMassage = _massagesCollection.FirstOrDefault(m => m.Id == newMassage.Id);

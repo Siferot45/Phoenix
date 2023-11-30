@@ -45,8 +45,8 @@
             <TextBlock Grid.Column="0" Grid.Row="3" Margin="0,5,5,0" Text="Описание" VerticalAlignment="Center"/>
 
             <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" Margin="0,5,5,0"/>
-            <TextBlock  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="297" Text="{Binding Category}" Margin="0,5,70,0"/>
-            <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Изменить" Command="{Binding ShowCategoryCommand}" Width="100" Margin="0,5,5,0"/>
+            <ComboBox Grid.Column="1" Grid.Row="1" IsEditable="True" Text="{Binding Category}" ItemsSource="{Binding categoryCollection}" DisplayMemberPath="Name" 
+                      Margin="0,5,5,0"/>
             <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Duration}" Margin="0,5,5,0"/>
             <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Text="{Binding Description}" Width="400" Margin="0,5,5,-70"/>
         </Grid>
