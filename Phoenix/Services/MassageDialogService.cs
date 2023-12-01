@@ -1,8 +1,9 @@
 ﻿using Phoenix.DAL.Entityes;
-using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels;
 using Phoenix.Views.Windows;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Phoenix.Services
 {
@@ -26,8 +27,10 @@ namespace Phoenix.Services
             if (massageEditorWindow.ShowDialog() != true)
                 return false;
 
+            Category w = massageAddModel.GetCategory(massageAddModel.CategoryName);
+
             massage.Name = massageAddModel.Name;
-            //massage.Category = new Category { Name = massageAddModel.Category };
+            massage.Category = w;
             massage.Duration = massageAddModel.Duration;
             massage.Description = massageAddModel.Description;
 

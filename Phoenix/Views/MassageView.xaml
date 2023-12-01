@@ -36,15 +36,19 @@
                     <Button Content="Удалить" Margin="3" Command="{Binding DeleteMassageCommand}"/>
                 </UniformGrid>
                 <!--Карточка массажа-->
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListBox  ItemsSource="{Binding MassagesCollection}" SelectedItem="{Binding SelectedMassage}">
+                <ListBox  ItemsSource="{Binding MassagesCollection}" 
+                          SelectedItem="{Binding SelectedMassage}" 
+                          SelectionMode="Single" 
+                          HorizontalContentAlignment="Stretch"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderBrush="Violet" BorderThickness="1" Margin="5" Padding="20" Width="200" Height="150">
+                                    <Border BorderBrush="Violet" BorderThickness="1" Margin="5" Padding="20" Width="350" Height="200">
                                         <StackPanel>
                                             <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" />
                                             <TextBlock Text="{Binding Category.Name, StringFormat='Категория: {0}'}"/>
                                             <TextBlock Text="{Binding Duration, StringFormat='Время: {0}'}" />
+                                            <TextBlock Text="{Binding Description, StringFormat='Описание: {0}'}" TextWrapping="Wrap"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
@@ -52,11 +56,10 @@
                         
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+                                <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                      </ListBox>
-                    </ScrollViewer>
             </DockPanel>
             
         </GroupBox>

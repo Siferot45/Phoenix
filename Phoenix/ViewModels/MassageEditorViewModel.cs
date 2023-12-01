@@ -1,5 +1,4 @@
 ﻿using Phoenix.DAL.Entityes;
-using Phoenix.Services.Interfaces;
 using Phoenix.ViewModels.EntityViewModel.Base;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,46 +8,55 @@ namespace Phoenix.ViewModels
 {
     class MassageEditorViewModel : ViewModelBase
     {
-        private readonly IUserDialog<Category> _userCategoryDialog;
         public int MassageId { get; }
 
-        #region Колеция массажей
-
-        private ObservableCollection<Massage> _massageCollection;
-        public ObservableCollection<Massage> MassageCollection 
-        {
-            get => _massageCollection;
-            set => Set(ref _massageCollection, value);
-        }
-        #endregion
-
         #region Название массажа
-        private string _name;
+        /// <summary>
+        /// Название массажа
+        /// </summary>
+        private string _name ;
         public string Name
         {
             get => _name;
             set => Set(ref _name, value);
         }
         #endregion
-        public List<Category> categoryCollection { get; set; }
-        #region Категория массажа
-        private string? _category;
-        public string? Category
+
+        #region Лист категорий
+        private List<Category> _categoryCollection;
+        public List<Category> CategoryCollection 
         {
-            get => _category;
-            set => Set(ref _category, value);
+            get => _categoryCollection;
+            set => Set(ref _categoryCollection, value);
         }
         #endregion
 
-        #region Продолжительность массажа
-
-        private int? _duration;
-        public int? Duration
+        #region Категория массажа строковая
+        /// <summary>
+        /// string CategoryName
+        /// </summary>
+        private string? _categoryName;
+        public string? CategoryName
         {
-            get => _duration;
-            set => _duration = value;
+            get => _categoryName;
+            set => Set(ref _categoryName, value);
         }
         #endregion
+
+        #region Категория массажа сущность
+        /// <summary>
+        /// Категория массажа Entity
+        /// </summary>
+        private Category? _newCategory;
+        public Category? NewCategory
+        {
+            get => _newCategory;
+            set => Set(ref _newCategory, value);
+        }
+
+        #endregion
+        
+        public int? Duration { get; set; }
 
         #region Описание массажа
 
@@ -58,34 +66,53 @@ namespace Phoenix.ViewModels
             get => _description; 
             set => Set(ref _description, value);
         }
-        
+
         #endregion
 
         /// <summary>
-        /// Конструктор с отображением ранние веденой информации о массаже
+        /// Конструктор с отображением ранние веденой информации о массаже и фильтром массажей
         /// </summary>
         public MassageEditorViewModel(Massage massage, ObservableCollection<Massage> massageCollection)
-        { 
-            _massageCollection = massageCollection;
-            categoryCollection = GetCategoryCollection(_massageCollection);
+        {
+            CategoryCollection = GetCategoryCollection(massageCollection);
             MassageId = massage.Id;
             Name = massage.Name;
-            Category = massage?.Category?.Name;
+            CategoryName = massage?.Category?.Name;
             Duration = massage?.Duration;
             Description = massage?.Description;
         }
 
-        #region Фильтр массажей
+        #region Фильтр массажей избавление от дублей
         /// <summary>
         /// Забирает из коллекции массажей категории
         /// </summary>
         /// <param name="massageCollection">ObservableCollection<Massage></param>
         /// <returns>List<Category></returns>
-        public List<Category> GetCategoryCollection(ObservableCollection<Massage> massageCollection)
+        public static List<Category> GetCategoryCollection(ObservableCollection<Massage> massageCollection)
         {
-            categoryCollection = massageCollection.Select(e => e.Category).ToList();
-            return categoryCollection;
+            List<Category> categories = massageCollection.Select(e => e.Category).ToList();
+
+            return categories.DistinctBy(i => i?.Name).ToList();
         }
         #endregion
+
+        #region Получить категорию установленную в диалоге
+        /// <summary>
+        /// Получить категорию установленную в диалоге
+        /// </summary>
+        /// <param name="nameCategory">Значение из Combo box</param>
+        public Category GetCategory(string nameCategory)
+        {
+            if(nameCategory == null)
+                nameCategory = "Без категории";
+
+            NewCategory = new Category();
+
+            NewCategory = CategoryCollection.FirstOrDefault(c => c?.Name == nameCategory) ?? new Category { Name = nameCategory };
+
+            return NewCategory;
+        
+        #endregion
+        }
     }
 }
