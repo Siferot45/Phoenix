@@ -48,9 +48,7 @@
             <ComboBox Grid.Column="1" Grid.Row="1" IsEditable="True" Text="{Binding CategoryName}" ItemsSource="{Binding CategoryCollection}" DisplayMemberPath="Name" 
                       Margin="0,5,5,0"/>
             <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Duration}" Margin="0,5,5,0"/>
-            <ScrollViewer Grid.Column="1" Grid.Row="3" Margin="0,0,0,-109">
-                <TextBox Grid.Column="1" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Visible"  TextWrapping="WrapWithOverflow"  Text="{Binding Description}" Width="400" Margin="0,5,5,-90"/>
-            </ScrollViewer>
+             <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap"  Text="{Binding Description}" MaxHeight="100" Width="400" Margin="0,5,5,-90"/>
         </Grid>
     </DockPanel>
 </Window>
