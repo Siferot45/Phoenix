@@ -13,6 +13,7 @@
         <Menu IsMainMenu="True">
             <MenuItem Header="Массажи" Command="{Binding ShowMassageViewCommand}"/>
             <MenuItem Header="Клиенты" Command="{Binding ShowClientsViewCommand}"/>
+            <MenuItem Header="Мастера" Command="{Binding }"/>
         </Menu>
         <StatusBar>
             <StatusBarItem>Потом сделать чтото</StatusBarItem>

@@ -29,20 +29,26 @@ namespace Phoenix.ViewModels
         }
         #endregion
 
-        private readonly IRepository<Massage> _massages;
-        private readonly IRepository<Client> _clients;
+        private readonly IRepository<Massage> _massagesRepository;
+        private readonly IRepository<Client> _clientsRepository;
+        private readonly IRepository<Master> _masterRepository;
         private readonly IUserDialog<Client> _userClientDialog;
         private readonly IUserDialog<Massage> _userMassageDialog;
+        private readonly IUserDialog<Master> _userMasterDialog;
 
-        public MainWindowViewModel(IRepository<Massage> massages, 
-                                   IRepository<Client> clients, 
+        public MainWindowViewModel(IRepository<Massage> massagesRepository, 
+                                   IRepository<Client> clientsRepository,
+                                   IRepository<Master> masterRepository,
                                    IUserDialog<Client> userClientDialog, 
-                                   IUserDialog<Massage> userMassageDialog) 
+                                   IUserDialog<Massage> userMassageDialog,
+                                   IUserDialog<Master> userMasterDialog) 
         {
-            _massages = massages;
-            _clients = clients;
+            _massagesRepository = massagesRepository;
+            _clientsRepository = clientsRepository;
+            _masterRepository = masterRepository;
             _userClientDialog = userClientDialog;
             _userMassageDialog = userMassageDialog;
+            _userMasterDialog = userMasterDialog;
         }
 
         #region Команда показа окна массажей
@@ -56,11 +62,11 @@ namespace Phoenix.ViewModels
 
         private void OnShowMassageViewCommandExecute(object obj)
         {
-            CurrentModel = new MassageViewModel(_massages, _userMassageDialog);
+            CurrentModel = new MassageViewModel(_massagesRepository, _userMassageDialog);
         }
         #endregion
 
-        #region Команда покказа окна клиентов
+        #region Команда показа окна клиентов
 
         private ICommand _showClientsViewCommand;
 
@@ -71,9 +77,24 @@ namespace Phoenix.ViewModels
 
         private void OnShowClientsViewCommandExecuted(object obj)
         {
-            CurrentModel = new ClientsViewModel(_clients, _userClientDialog);
+            CurrentModel = new ClientsViewModel(_clientsRepository, _userClientDialog);
         }
 
+        #endregion
+
+        #region Master windows display command
+
+        private ICommand _showMasterViewCommand;
+
+        public ICommand ShowMasterViewCommand => _showMasterViewCommand
+            ??= new CommandHelper(OnShowMasterViewCommandExecuted, CanShowMasterViewCommandExecute);
+
+        private bool CanShowMasterViewCommandExecute(object obj) => true;
+
+        private void OnShowMasterViewCommandExecuted(object obj)
+        {
+            CurrentModel = new MasterViewModel(_masterRepository, _userMasterDialog);
+        }
         #endregion
     }
 }
