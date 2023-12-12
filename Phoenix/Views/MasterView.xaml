@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Phoenix.Views.MasterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Phoenix.ViewModels.EntityViewModel"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance {x:Type vm:MasterViewModel}}"
+             d:DesignHeight="500" d:DesignWidth="820">
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Список массажей" FontSize="15" Margin="5">
+
+            <GroupBox.Resources>
+                <CollectionViewSource x:Key="MastersView" Source="{Binding MastersCollection}"/>
+            </GroupBox.Resources>
+
+            <DockPanel>
+
+                <UniformGrid DockPanel.Dock="Bottom" Rows="1">
+                    <Button Content="Добавить" Margin="3" Command="{Binding AddNewMasterCommand}"/>
+                    <Button Content="Удалить" Margin="3" Command="{Binding DeleteMasterCommand}"/>
+                </UniformGrid>
+                <!--Карточка мастера-->
+                <ListBox  ItemsSource="{Binding MastersCollection}" 
+                          SelectedItem="{Binding SelectedMaster}" 
+                          SelectionMode="Single" 
+                          HorizontalContentAlignment="Stretch"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Violet" BorderThickness="1" Margin="5" Padding="20" Width="350" Height="200">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Surname}" FontWeight="Bold" FontSize="16" />
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Patronymic}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ListBox>
+            </DockPanel>
+
+        </GroupBox>
+    </Grid>
+</UserControl>

@@ -30,8 +30,8 @@ namespace Phoenix.ViewModels.EntityViewModel
         #endregion
 
         #region Selected master
-        private Master _selectedMaster;
-        public Master SelectedMaster
+        private Master? _selectedMaster;
+        public Master? SelectedMaster
         {
             get => _selectedMaster;
             set => Set(ref _selectedMaster, value);
@@ -59,7 +59,8 @@ namespace Phoenix.ViewModels.EntityViewModel
         {
             var newMaster = new Master();
 
-            //Todo Make an add dialog 
+            if (!_masterDialog.ShowEditWindow(newMaster, MastersCollection))
+                return;
 
             _mastersCollection.Add(_masterRepository.Add(newMaster));
         }

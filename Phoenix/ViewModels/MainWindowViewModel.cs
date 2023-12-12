@@ -84,9 +84,9 @@ namespace Phoenix.ViewModels
 
         #region Master windows display command
 
-        private ICommand _showMasterViewCommand;
+        private ICommand _showMastersViewCommand;
 
-        public ICommand ShowMasterViewCommand => _showMasterViewCommand
+        public ICommand ShowMasterViewCommand => _showMastersViewCommand
             ??= new CommandHelper(OnShowMasterViewCommandExecuted, CanShowMasterViewCommandExecute);
 
         private bool CanShowMasterViewCommandExecute(object obj) => true;

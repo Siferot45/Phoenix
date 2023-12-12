@@ -4,11 +4,12 @@ using Phoenix.Services.Interfaces;
 
 namespace Phoenix.Services
 {
-    static class ServicesRegistrator
+    static class ServicesRegistration
     {
         public static IServiceCollection AddServices(this IServiceCollection services) => services
             .AddTransient<IUserDialog<Client>, ClientDialogService>()
             .AddTransient<IUserDialog<Massage>, MassageDialogService>()
+            .AddTransient<IUserDialog<Master>, MasterDialogService>()
             ;
     }
 }
