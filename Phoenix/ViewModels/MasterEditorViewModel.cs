@@ -13,6 +13,7 @@ namespace Phoenix.ViewModels
             Name = master.Name;
             Surname = master.Surname;
             Patronymic = master.Patronymic;
+
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using Phoenix.DAL.Entityes;
 using Phoenix.ViewModels;
 using Phoenix.Views.Windows;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace Phoenix.Services
 {

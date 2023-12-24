@@ -1,6 +1,7 @@
 ﻿using Phoenix.DAL.Entityes;
 using Phoenix.ViewModels;
 using Phoenix.ViewModels.EntityViewModel;
+using Phoenix.Views.Windows;
 using System.Collections.ObjectModel;
 
 namespace Phoenix.Services
@@ -17,7 +18,8 @@ namespace Phoenix.Services
         {
             var masterEditorModel = new MasterEditorViewModel(entity);
 
-            var masterEditorWindow = new MasterEditorWindow(masterEditorModel);
+            var masterEditorWindow = new MasterEditorWindow(
+                );
 
             return true;
         }

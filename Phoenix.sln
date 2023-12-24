@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix", "Phoenix\Phoenix.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix.DAL", "Phoenix.DAL\Phoenix.DAL.csproj", "{CFFBFF1E-2FFB-42DA-8924-567282262119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoenix.Interfaces", "Phoenix.Interfaces\Phoenix.Interfaces.csproj", "{55AA1630-C0CB-4850-8DA0-9FC0C42E847B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix.Interfaces", "Phoenix.Interfaces\Phoenix.Interfaces.csproj", "{55AA1630-C0CB-4850-8DA0-9FC0C42E847B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoenix.Test", "Phoenix.Test\Phoenix.Test.csproj", "{7CE2DE6F-9E61-47EF-9514-F150F2AAD43F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{55AA1630-C0CB-4850-8DA0-9FC0C42E847B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55AA1630-C0CB-4850-8DA0-9FC0C42E847B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55AA1630-C0CB-4850-8DA0-9FC0C42E847B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE2DE6F-9E61-47EF-9514-F150F2AAD43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE2DE6F-9E61-47EF-9514-F150F2AAD43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE2DE6F-9E61-47EF-9514-F150F2AAD43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE2DE6F-9E61-47EF-9514-F150F2AAD43F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
